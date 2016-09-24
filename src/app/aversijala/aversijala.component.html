@@ -1,0 +1,40 @@
+<p>
+  aversijala works!
+</p>
+
+<section>
+<ul *ngFor="let alumno of alumnos">
+	<li>Nombre: {{alumno.id}} -- {{alumno.name}}</li>
+	<li>Promedio: {{alumno.promedio}}</li>
+	<li>Edad: {{alumno.edad}}</li>
+	<li>¿Es regular el vato?: {{alumno.regular}}</li>
+	<li *ngIf="alumno.faltas == 4">Reprobaste prro!</li>
+	<button (click)="addFalta(alumno)">Agregar falta</button>
+	{{alumno.faltas}}
+	<button (click)="removeFalta(alumno)">Perdón, la cagué, no faltó</button>
+</ul>
+</section>
+
+<section>
+<h4>Mira los productos gfe</h4>
+<h3>TOTAL: {{total() | currency:'MXN':true}}</h3>
+<ul *ngFor="let producto of productos">
+	<li [class.sold_out]="quedan(producto) == 0">ID: {{producto.id}} </li>
+	<li>Nombre: {{producto.name | uppercase}}</li>
+	<li>Precio: {{producto.price | currency:'MXN':true}}</li>
+	<li>Cantidades disponbiles: {{producto.stock}}</li>
+	<li>stock : {{quedan(producto)}}</li>
+	<li class="sold_out" *ngIf="quedan(producto) == 0">SOLD OUT!</li>
+	<li>Descripcion: {{producto.description}}</li>
+	<figure>
+	<img [src]="producto.image" [alt]="producto.description">
+	</figure>
+
+	<h4 *ngIf="producto.quantity > producto.stock">No hay suficientes para tu pedido</h4>
+
+	<h3 *ngIf="producto.quantity > 0">{{pedido(producto)}}</h3>
+	<button (click)="addProduct(producto)">Agregar</button>
+	<input type="text" [(ngModel)]="producto.quantity">
+	<button (click)="removeProduct(producto)">Quitar</button>
+</ul>
+</section>

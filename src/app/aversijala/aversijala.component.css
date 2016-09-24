@@ -1,0 +1,8 @@
+img{
+	width: 50%;
+	height: 300px;
+}
+
+.sold_out{
+	background: red;
+}

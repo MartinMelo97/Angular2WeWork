@@ -1,0 +1,16 @@
+<p>
+  alumnos works!
+</p>
+
+<section>
+<ul *ngFor="let alumno of alumnos">
+	<li>Nombre: {{alumno.id}} -- {{alumno.name}}</li>
+	<li>Promedio: {{alumno.promedio}}</li>
+	<li>Edad: {{alumno.edad}}</li>
+	<li>¿Es regular el vato?: {{alumno.regular}}</li>
+	<li *ngIf="alumno.faltas == 4">Reprobaste prro!</li>
+	<button (click)="addFalta(alumno)">Agregar falta</button>
+	{{alumno.faltas}}
+	<button (click)="removeFalta(alumno)">Perdón, la cagué, no faltó</button>
+</ul>
+</section>
